@@ -21,11 +21,11 @@ env:
   ARM_TENANT_ID: '${{ secrets.AZURE_TENANT_ID }}'
 
 jobs:
-  az-sp-login:
-    uses: ./.github/workflows/az_sp_login
+  az-login:
+    uses: ./.github/workflows/az_login
   terraform-plan:
     name: 'Terraform Plan'
-    needs: [az-sp-login]
+    needs: [az-login]
     runs-on: ubuntu-latest
     env:
       #this is needed since we are running terraform with read-only permissions
