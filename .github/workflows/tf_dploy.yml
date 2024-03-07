@@ -38,7 +38,7 @@ jobs:
 
       # Install the latest version of the Terraform CLI
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_wrapper: false
 
@@ -70,7 +70,7 @@ jobs:
 
       # Save plan to artifacts
       - name: Publish Terraform Plan
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan
           path: tfplan
@@ -130,7 +130,7 @@ jobs:
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
 
       - name: az login principal
         run: az login --service-principal -u '${{ secrets.AZURE_CLIENT_ID }}' -p '${{ secrets.AZURE_CLIENT_SECRET }}' --tenant '${{ secrets.AZURE_TENANT_ID }}'
@@ -141,7 +141,7 @@ jobs:
 
       # Download saved plan from artifacts
       - name: Download Terraform Plan
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tfplan
 
